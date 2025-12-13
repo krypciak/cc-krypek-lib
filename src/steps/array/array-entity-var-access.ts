@@ -1,5 +1,4 @@
 import { prestart } from '../../loading-stages'
-import { arrayVarAccess } from './array'
 
 function findEntitiesOn(box: ig.Entity): ig.Entity[] {
     const { x, y, z } = box.coll.pos
@@ -24,13 +23,13 @@ prestart(() => {
     ig.Game.inject({
         onVarAccess(path, keys) {
             if (keys[1] == 'entities') {
-                if (keys[2] == 'all') return arrayVarAccess([...this.entities], keys.slice(3))
-                if (keys[2] == 'allShown') return arrayVarAccess([...this.shownEntities], keys.slice(3))
+                if (keys[2] == 'all') return ig.Vars.arrayVarAccess([...this.entities], keys.slice(3))
+                if (keys[2] == 'allShown') return ig.Vars.arrayVarAccess([...this.shownEntities], keys.slice(3))
                 if (keys[2] == 'type') {
                     const entityTypeName = keys[3] as EntityTypeName
                     const clazz = entityTypeNameToClass(entityTypeName)
                     const entities = ig.game.entities.filter(entity => entity instanceof clazz)
-                    return arrayVarAccess(entities, keys.slice(4))
+                    return ig.Vars.arrayVarAccess(entities, keys.slice(4))
                 }
                 if (keys[2] == 'standingOn') {
                     const entityNamePrefix = keys[3]
@@ -42,7 +41,7 @@ prestart(() => {
                             allEntities.add(entity)
                         }
                     }
-                    return arrayVarAccess([...allEntities], keys.slice(4))
+                    return ig.Vars.arrayVarAccess([...allEntities], keys.slice(4))
                 }
             }
             return this.parent(path, keys)

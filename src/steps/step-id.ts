@@ -1,4 +1,4 @@
-import { postload } from '../loading-stages'
+import { postload, prestart } from '../loading-stages'
 import { applyStepMacros } from './step-macros'
 
 postload(() => {
@@ -37,7 +37,7 @@ function injectSteps() {
             if (stepType == 'LABEL') {
                 // @ts-expect-error
                 const name: string = step.name
-                if (!name) throw new Error("label name empty!")
+                if (!name) throw new Error('label name empty!')
                 if (labeledSteps[name]) throw new Error(`Step Collection includes label '${name}' twice`)
                 labeledSteps[name] = step
             }
@@ -73,7 +73,13 @@ function injectSteps() {
         return constructStepsRecursive(steps, stepNamespace, labeledSteps, [])!
     }
 }
-
-export function getStepSettings(step: ig.StepBase) {
-    return stepList.get(step)?.settings
+declare global {
+    namespace ig.StepHelpers {
+        function getStepSettings(step: ig.StepBase): ig.EventStepBase.Settings | ig.ActionStepBase.Settings | undefined
+    }
 }
+prestart(() => {
+    ig.StepHelpers.getStepSettings = function (step: ig.StepBase) {
+        return stepList.get(step)?.settings
+    }
+})

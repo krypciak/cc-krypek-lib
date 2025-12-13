@@ -51,18 +51,23 @@ declare global {
             }
             var CHANGE_VAR_ARRAY: CHANGE_VAR_ARRAY_CONSTRUCTOR
         }
+        interface VarsConstructor {
+            arrayVarAccess<T>(array: T[], keys: string[]): any
+        }
     }
 }
 
-export function arrayVarAccess<T>(array: T[], keys: string[]) {
-    if (keys.length == 0) return array
-    if (keys[0] == 'length') return array.length
-    const index = parseInt(keys[0])
-    const value = array[index]
-    const forwardValue = attemptForwardVar(value, keys, 1)
-    if (forwardValue) return forwardValue
-    return value
-}
+prestart(() => {
+    ig.Vars.arrayVarAccess = function <T>(array: T[], keys: string[]) {
+        if (keys.length == 0) return array
+        if (keys[0] == 'length') return array.length
+        const index = parseInt(keys[0])
+        const value = array[index]
+        const forwardValue = attemptForwardVar(value, keys, 1)
+        if (forwardValue) return forwardValue
+        return value
+    }
+})
 
 function setArray<T>(array: T[], to: T[]) {
     array.length = to.length
