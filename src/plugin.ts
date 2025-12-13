@@ -9,6 +9,7 @@ import './title-screen-skip'
 import './chrome-reload-replace'
 import './find-class-name'
 import './deep-find'
+import './steps/all'
 
 export default class KrypekLib implements PluginClass {
     static dir: string

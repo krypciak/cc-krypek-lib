@@ -1,5 +1,13 @@
 export {}
 declare global {
+    function deepFind<T>(
+        obj: T,
+        lookingFor: any | ((obj: any) => boolean),
+        path?: string,
+        ignoreSet?: Set<string>,
+        seen?: WeakMap<any, any>
+    ): T
+
     interface Window {
         deepFind<T>(
             obj: T,
