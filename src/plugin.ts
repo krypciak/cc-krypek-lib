@@ -10,6 +10,7 @@ import './chrome-reload-replace'
 import './find-class-name'
 import './deep-find'
 import './steps/all'
+import './input-field-dialog'
 
 export default class KrypekLib implements PluginClass {
     static dir: string

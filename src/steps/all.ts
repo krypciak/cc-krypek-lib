@@ -1,6 +1,7 @@
 import './step-id'
 import './resolve-object-access-fix'
 
+import './input-field-dialog'
 import './log'
 import './set-var'
 import './vec-assign'
