@@ -6,7 +6,7 @@ rm -rf "$BASE_NAME"*
 pnpm install
 pnpm run build
 mkdir -p pack
-cp -rf icon LICENSE plugin.js ./pack
+cp -rf LICENSE plugin.js ./pack
 [ -d ./assets ] && cp -r assets ./pack
 [ -d ./lang ] && cp -r lang ./pack
 
@@ -15,7 +15,6 @@ for file in $(find . -iname '*.json') $(find . -iname '*.json.patch') $(find . -
     jq '.' ../$file -c > $file
 done
 cp ../ccmod.json .
-rm -rf icon/icon240.png
 LIST="$(find . -name '*.kra') $(find . -name '*~')"
 rm -rf $LIST
 zip -r "../$NAME" .
