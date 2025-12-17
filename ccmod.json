@@ -6,9 +6,6 @@
     "repository": "https://github.com/krypciak/cc-krypek-lib",
     "tags": ["dev", "library"],
     "authors": "krypek",
-    "icons": {
-        "24": "icon/icon.png"
-    },
     "dependencies": {
         "crosscode": ">=1.4.0",
         "ccmodmanager": ">=1.1.2"
