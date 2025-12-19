@@ -32,6 +32,17 @@ declare global {
                 new (settings: ig.EVENT_STEP.MACRO.Settings): MACRO
             }
             var MACRO: MACRO_CONSTRUCTOR
+
+            namespace COMMENT {
+                interface Settings {
+                    [arg: string]: any
+                }
+            }
+            interface COMMENT extends ig.EventStepBase {}
+            interface COMMENT_CONSTRUCTOR extends ImpactClass<COMMENT> {
+                new (settings: ig.EVENT_STEP.COMMENT.Settings): COMMENT
+            }
+            var COMMENT: COMMENT_CONSTRUCTOR
         }
         namespace ACTION_STEP {}
     }
@@ -121,6 +132,9 @@ export function applyStepMacros<T extends ig.EventStepBase.Settings[] | ig.Actio
 
             steps.splice(i, 1, ...body)
             i += body.length - 1
+        } else if (step.type == 'COMMENT') {
+            steps.splice(i, 1)
+            i--
         }
     }
 
