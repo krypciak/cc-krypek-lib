@@ -6,12 +6,12 @@ declare global {
             namespace SET_VAR {
                 interface Settings {
                     varName: ig.Event.VariableExpression
-                    value: ig.Event.ArrayExpression
+                    value: ig.Event.VarExpression
                 }
             }
             interface SET_VAR extends ig.EventStepBase {
                 varName: ig.Event.VariableExpression
-                value: ig.Event.ArrayExpression
+                value: ig.Event.VarExpression
             }
             interface SET_VAR_CONSTRUCTOR extends ImpactClass<SET_VAR> {
                 new (settings: ig.EVENT_STEP.SET_VAR.Settings): SET_VAR

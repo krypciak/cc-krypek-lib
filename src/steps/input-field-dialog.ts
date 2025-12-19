@@ -8,7 +8,7 @@ declare global {
                 width?: number
                 title: ig.Event.StringExpression
                 initialValue?: ig.Event.StringExpression
-                saveToVar?: ig.Event.StringExpression
+                saveToVar?: ig.Event.VariableExpression
                 validRegex?: ig.Event.StringExpression
 
                 accepted?: ig.EventStepBase.Settings[]
@@ -59,7 +59,7 @@ prestart(() => {
         start(data, _eventCall) {
             const title = ig.Event.getExpressionValue(this.title)
             const initialValue = ig.Event.getExpressionValue(this.initialValue)?.toString() ?? ''
-            const saveToVar = ig.Event.getExpressionValue(this.saveToVar)
+            const saveToVar = ig.Event.getVarName(this.saveToVar)
 
             let isValid: InputFieldIsValidFunc | undefined
             if (this.validRegex) {
