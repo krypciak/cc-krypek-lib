@@ -67,7 +67,7 @@ function prepareBody(body: any, args: Record<string, any>, depth: number) {
             if (args[name] !== undefined) sp[i] = args[name]
         }
         sp = sp.flat()
-        if (sp.every(s => typeof s === 'string')) return [sp.join(' ')]
+        if (sp.some(s => typeof s !== 'object')) return [sp.join(' ')]
         return prepareBody(sp, args, depth - 1)
     }
     if (Array.isArray(body)) {
