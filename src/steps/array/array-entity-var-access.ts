@@ -1,12 +1,5 @@
 import { prestart } from '../../loading-stages'
 
-function findEntitiesOn(box: ig.Entity): ig.Entity[] {
-    const { x, y, z } = box.coll.pos
-    let { x: width, y: height, z: zHeight } = box.coll.size
-
-    return ig.game.getEntitiesInRectangle(x, y, z + zHeight + 1, width, height, 64)
-}
-
 function findEntitiesWithNamePrefix(prefix: string): ig.Entity[] {
     return ig.game.entities.filter(entity => entity.name?.startsWith(prefix))
 }
@@ -36,7 +29,7 @@ prestart(() => {
 
                     const allEntities = new Set<ig.Entity>()
                     for (const box of findEntitiesWithNamePrefix(entityNamePrefix)) {
-                        const entities = findEntitiesOn(box)
+                        const entities = ig.game.getEntitiesOnTop(box)
                         for (const entity of entities) {
                             allEntities.add(entity)
                         }
