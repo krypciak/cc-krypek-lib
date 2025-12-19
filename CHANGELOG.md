@@ -10,6 +10,11 @@
 - Add comment step
 - Add ig.EVENT_STEP.FORCE_LEVEL_UP
 - Add `logType` to ig.EVENT_STEP.LOG
+- Add `game.entities.name.entity_name` variable
+
+### Changed
+
+- Replace marker position vec resolve with a more general `game.entities.name.` variable
 
 ## [1.0.0] 2025-12-17
 

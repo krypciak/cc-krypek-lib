@@ -43,6 +43,11 @@ prestart(() => {
                     }
                     return ig.Vars.arrayVarAccess([...allEntities], keys.slice(4))
                 }
+                if (keys[2] == 'name') {
+                    const entityName = keys[3]
+                    const entity = ig.game.getEntityByName(entityName)
+                    return ig.vars.forwardEntityVarAccess(entity, keys, 4)
+                }
             }
             return this.parent(path, keys)
         },
