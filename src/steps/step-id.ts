@@ -1,4 +1,5 @@
 import { postload, prestart } from '../loading-stages'
+import { Opts } from '../options'
 import { applyStepMacros } from './step-macros'
 
 postload(() => {
@@ -27,7 +28,16 @@ function injectSteps() {
             // @ts-expect-error
             const stepClass: any = stepNamespace[stepType]
 
-            if (!stepClass) continue
+            if (!stepClass) {
+                if (Opts.printWarningOnUnknownStep) {
+                    console.warn(
+                        'step:',
+                        `ig.${stepNamespace == ig.EVENT_STEP ? 'EVENT_STEP' : 'ACTION_STEP'}.${stepType}`,
+                        'not found! skipping...'
+                    )
+                }
+                continue
+            }
 
             /* custom stuff start */
             const step: ig.StepBase = new stepClass(stepSettings)

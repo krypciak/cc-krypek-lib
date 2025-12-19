@@ -37,6 +37,12 @@ export function registerOpts() {
                         description: 'Replace chorme.runtime.reload() with location.reload()',
                         init: false,
                     },
+                    printWarningOnUnknownStep: {
+                        type: 'CHECKBOX',
+                        name: 'Warn on unknown step',
+                        description: `Print a warning to console when a step that doesn't exist is parsed`,
+                        init: false,
+                    },
                 },
             },
         },
