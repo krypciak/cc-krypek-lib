@@ -11,6 +11,7 @@ import './find-class-name'
 import './deep-find'
 import './steps/all'
 import './input-field-dialog'
+import './memory-leak-fix'
 
 export default class KrypekLib implements PluginClass {
     static dir: string
