@@ -3,6 +3,15 @@
 # Change Log
 
 ## [Unreleased]
+
+### Added
+
+- Added a memory leak fix on reload
+
+### Fixed
+
+- Fix object var forwarding not falsy values
+
 ## [1.1.0] 2025-12-19
 
 ### Added

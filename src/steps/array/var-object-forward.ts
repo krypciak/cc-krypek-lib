@@ -13,14 +13,19 @@ export function forwardVarAccess(obj: ig.Vars.Accessor, keys: string[]) {
     return null
 }
 
-export function attemptForwardVar(value: unknown, keys: string[], keysOffset: number) {
+function attemptForwardVar(
+    value: unknown,
+    keys: string[],
+    keysOffset: number
+): { success: boolean; forwardValue: any } {
     if (value && typeof value === 'object') {
         if (value instanceof ig.Entity) {
-            return ig.vars.forwardEntityVarAccess(value, keys, keysOffset)
+            return { success: true, forwardValue: ig.vars.forwardEntityVarAccess(value, keys, keysOffset) }
         } else if ('onVarAccess' in value && typeof value.onVarAccess === 'function') {
-            return forwardVarAccess(value as ig.Vars.Accessor, keys.slice(keysOffset))
+            return { success: true, forwardValue: forwardVarAccess(value as ig.Vars.Accessor, keys.slice(keysOffset)) }
         }
     }
+    return { success: false, forwardValue: value }
 }
 
 let fromResolve = false
@@ -35,8 +40,8 @@ prestart(() => {
                     if (!v || typeof v != 'object') break
                     obj = v
 
-                    const forwardValue = attemptForwardVar(obj, keys, i + 1)
-                    if (forwardValue) return forwardValue
+                    const { success, forwardValue } = attemptForwardVar(obj, keys, i + 1)
+                    if (success) return forwardValue
                 }
             }
 
@@ -54,5 +59,19 @@ prestart(() => {
         const ret = orig.call(this, path)
         fromResolve = false
         return ret
+    }
+})
+
+declare global {
+    namespace ig {
+        interface VarsConstructor {
+            forwardVar(value: unknown, keys: string[], keysOffest: number): any
+        }
+    }
+}
+prestart(() => {
+    ig.Vars.forwardVar = function (value, keys, keysOffest) {
+        const { forwardValue } = attemptForwardVar(value, keys, keysOffest)
+        return forwardValue
     }
 })

@@ -1,6 +1,6 @@
 import { prestart } from '../../loading-stages'
-import { attemptForwardVar } from './var-object-forward'
 
+import './var-object-forward'
 import './array-entity-var-access'
 import './array-regular-polygon-vertices'
 
@@ -63,9 +63,7 @@ prestart(() => {
         if (keys[0] == 'length') return array.length
         const index = parseInt(keys[0])
         const value = array[index]
-        const forwardValue = attemptForwardVar(value, keys, 1)
-        if (forwardValue) return forwardValue
-        return value
+        return ig.Vars.forwardVar(value, keys, 1)
     }
 })
 
