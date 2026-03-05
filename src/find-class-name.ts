@@ -60,9 +60,9 @@ global.fcn =
                 name = rec(window.determine, 'determine', 6)
                 if (name) return (classNameCache[id] = name)
             }
-            // if ('instanceinator' in window) {
-            //     name = rec(window.instanceinator, 'instanceinator', 4)
-            //     if (name) return name
-            // }
+            if ('instanceinator' in window) {
+                name = rec((window.instanceinator as any).classes, 'instanceinator.classes', 3)
+                if (name) return name
+            }
             return 'UNKNOWN'
         }
