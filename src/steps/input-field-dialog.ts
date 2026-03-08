@@ -58,7 +58,9 @@ prestart(() => {
         },
         start(data, _eventCall) {
             const title = ig.Event.getExpressionValue(this.title)
-            const initialValue = ig.Event.getExpressionValue(this.initialValue)?.toString() ?? ''
+            const initialValue = ig.TextParser.bakeVars(
+                ig.Event.getExpressionValue(this.initialValue)?.toString() ?? ''
+            )
             const saveToVar = ig.Event.getVarName(this.saveToVar)
 
             let isValid: InputFieldIsValidFunc | undefined
@@ -71,7 +73,10 @@ prestart(() => {
                 }
             }
             if (this.validFunction) {
-                if (this.validRegex) throw new Error(`ig.EVENT_STEP.SHOW_INPUT_DIALOG "validFunction" and "validRegex" options are mutually exclusive!`)
+                if (this.validRegex)
+                    throw new Error(
+                        `ig.EVENT_STEP.SHOW_INPUT_DIALOG "validFunction" and "validRegex" options are mutually exclusive!`
+                    )
                 isValid = this.validFunction
             }
 

@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Changed
+
+- Bake vars into ig.EVENT_STEP.SHOW_INPUT_DIALOG `initialValue`
+
 ## [1.1.1] 2026-03-06
 
 ### Added
