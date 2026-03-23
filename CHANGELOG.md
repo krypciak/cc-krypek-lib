@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Added
+
+- Add `game.entities.enemyType` read only variable
+
 ## [1.1.2] 2026-03-11
 
 ### Changed

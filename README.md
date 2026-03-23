@@ -259,8 +259,11 @@ Examples:
 ## Entity var access
 
 `cc-krypek-lib` adds the following read-only variables:
-- `game.entities.all` - returns an array of all entities on a map
-- `game.entities.allShown` - returns an array of all visible entities on a map
+- `game.entities.all` - returns an array of all entities on the map
+- `game.entities.allShown` - returns an array of all visible entities on the map
+- `game.entities.enemyType.ENEMY_TYPE` - returns an array of enemies with enemy type equal to `ENEMY_TYPE` on the map.  
+  Note that due to enemy types having dots (`.`) in them, you have to replace them with `__`.  
+  For example: `boss.radfish` becomes `boss__radfish`
 - `game.entities.type.ENTITY_TYPE` - returns an array of all entities with the type of `ENTITY_TYPE`
 - `game.entities.standingOn.ENTITY_NAME` - returns an array of all entities that are currently standing on the entity named `ENTITY_NAME`
 - `game.entities.name.ENTITY_NAME` - returns an entity named `ENTITY_NAME`
@@ -297,6 +300,11 @@ Examples:
         ]
     }
 ] },
+```
+
+```json
+{ "type": "COMMENT", "text": "print the count of radical fishes on the map" },
+{ "type": "LOG", "text": { "varName": "game.entities.enemyType.boss__radfish.length" } },
 ```
 
 ## Other new steps

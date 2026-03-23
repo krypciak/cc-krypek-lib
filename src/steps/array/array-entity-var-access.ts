@@ -24,6 +24,14 @@ prestart(() => {
                     const entities = ig.game.entities.filter(entity => entity instanceof clazz)
                     return ig.Vars.arrayVarAccess(entities, keys.slice(4))
                 }
+                if (keys[2] == 'enemyType') {
+                    const enemyType = keys[3].replace(/__/g, '.')
+                    const allEnemies = ig.game.entities.filter(
+                        entity => entity instanceof ig.ENTITY.Enemy
+                    ) as ig.ENTITY.Enemy[]
+                    const enemies = allEnemies.filter(enemy => enemy.enemyName == enemyType)
+                    return ig.Vars.arrayVarAccess(enemies, keys.slice(4))
+                }
                 if (keys[2] == 'standingOn') {
                     const entityNamePrefix = keys[3]
 
