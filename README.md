@@ -408,6 +408,45 @@ Example:
 }
 ```
 
+### `ig.EVENT_STEP.SHOW_OBJECT_SLIDER_DIALOG`
+
+Shows a object slider dialog popup, with configurable minimum, maximum and step value, and saves the text to a variable.  
+
+Settings:
+- `width` (`number`) (optional, default = `200`)
+- `title` (`ig.Event.StringExpression`) - title of the popup
+- `saveToVar` (`ig.Event.VariableExpression`) (optional) - save the text to a variable
+- `accepted` (`ig.EventStepBase.Settings[]`) (optional) - steps to run when the text was valid and popup was accepted 
+- `declined` (`ig.EventStepBase.Settings[]`) (optional) - steps to run when the popup was rejected
+- `initialValue` (`ig.Event.NumberExpression`) (optional) - initial value
+- `min` (`ig.Event.NumberExpression`) (optional) - minimum value
+- `max` (`ig.Event.NumberExpression`) (optional) - maximum value
+- `step` (`ig.Event.NumberExpression`) (optional) - round the value using `Math.round`
+- `fill` (`ig.Event.BooleanExpression`) (optional) - fill the left of the slider
+- `showPercentage` (`ig.Event.BooleanExpression`) (optional) - display `0.1` as `10%` for example
+- `thumbWidth` (`ig.Event.NumberExpression`) (optional) - width of the slider thumb (the place where the value is written)
+
+Example:
+```json
+{ 
+    "type": "SHOW_OBJECT_SLIDER_DIALOG",
+    "width": 300,
+    "title": "Out of 10, rate this documantation!",
+    "saveToVar": "tmp.rating",
+    "accepted": [
+        { "type": "COMMENT", "text": "steps to run when accepted"}
+    ],
+    "rejected": [
+        { "type": "COMMENT", "text": "steps to run when rejected"}
+    ],
+    "initialValue": 10,
+    "min": 7,
+    "max": 11,
+    "step": 1
+}
+```
+
+
 ### `ig.EVENT_STEP.SET_ARRAY_REGULAR_POLYGON_VERTICES`
 
 Create an array of `Vec2` that represents the positions of vertecies of a n-sided regular polygon relative to the shape's center.

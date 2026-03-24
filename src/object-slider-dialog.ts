@@ -7,7 +7,6 @@ declare global {
             /* ccmodmanager like options */
             type Config = {
                 init: number
-                snap?: boolean
                 fill?: boolean
                 showPercentage?: boolean
                 /** Force the thumb width (values below 30 will be ignored) */
@@ -69,7 +68,6 @@ prestart(() => {
             }
             this.entries = Object.values(sliderConfig.data!)
 
-            const snap = sliderConfig.snap ?? true
             const fill = sliderConfig.fill
             const thumbWidth = Math.max(30, sliderConfig.thumbWidth ?? Math.floor(252 / this.entries.length))
 
@@ -80,7 +78,7 @@ prestart(() => {
             this.rowButtonGroup = new sc.RowButtonGroup()
             this.rowButtonGroup.setLeftRightCallback(this.onSliderLeftRight.bind(this))
 
-            this.slider = new sc.OptionFocusSlider(this.onSliderChange.bind(this), snap, fill, this.rowButtonGroup)
+            this.slider = new sc.OptionFocusSlider(this.onSliderChange.bind(this), true, fill, this.rowButtonGroup)
             this.entries = Object.values(sliderConfig.data!)
             this.slider.setPreferredThumbSize(thumbWidth, 21)
 
