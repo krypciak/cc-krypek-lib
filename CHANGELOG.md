@@ -8,6 +8,11 @@
 
 - Add `game.entities.enemyType` read only variable
 
+### Fixed
+
+- Fix `ig.EVENT_STEP.SET_VAR` value not getting copied on each call
+
+
 ## [1.1.2] 2026-03-11
 
 ### Changed

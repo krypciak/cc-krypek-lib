@@ -21,6 +21,8 @@ declare global {
     }
 }
 
+const copy: <T>(obj: T) => T = window.structuredClone ?? (obj => JSON.parse(JSON.stringify(obj)))
+
 prestart(() => {
     ig.EVENT_STEP.SET_VAR = ig.EventStepBase.extend({
         init(settings) {
@@ -33,7 +35,8 @@ prestart(() => {
             const varName = ig.Event.getVarName(this.varName)
             if (!varName) throw new Error('ig.EVENT_STEP.SET_VAR "varName" is null!')
 
-            const value = ig.Event.getExpressionValue(this.value)
+            const valueCopy = copy(this.value)
+            const value = ig.Event.getExpressionValue(valueCopy)
 
             ig.vars.set(varName, value)
         },
