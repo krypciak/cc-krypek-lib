@@ -21,8 +21,8 @@ declare global {
 interface StoredArray<T = ig.VarValue> extends Array<T> {}
 
 prestart(() => {
-    ig.Event.getArray = array => {
-        let value = ig.Event.getExpressionValue(array) as StoredArray
+    ig.Event.getArray = <T>(array: ig.Event.ArrayExpression<T>) => {
+        let value = ig.Event.getExpressionValue(array) as StoredArray<T>
         if (!Array.isArray(value))
             throw new Error(`ig.Event.getArray: resolved "${JSON.stringify(array)}" is not an array!`)
         value = value.map(v => ig.Event.getExpressionValue(v))
