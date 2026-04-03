@@ -467,6 +467,10 @@ Example:
 },
 ```
 
+## Pvp damage factor override
+
+You can override the current pvp damage factor by setting `tmp.pvpDamageFactor`.  
+
 ## Building
 
 ```bash

@@ -13,6 +13,7 @@ import './steps/all'
 import './input-field-dialog'
 import './object-slider-dialog'
 import './memory-leak-fix'
+import './pvp-damage-factor-override'
 
 export default class KrypekLib implements PluginClass {
     static dir: string

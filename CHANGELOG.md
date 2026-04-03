@@ -7,6 +7,7 @@
 ### Added
 
 - Add `game.entities.enemyType` read only variable
+- Add `tmp.pvpDamageFactor` variable for overriding pvp damage factor
 
 ### Fixed
 
