@@ -9,6 +9,7 @@
 
 - Add `game.entities.enemyType` read only variable
 - Add `tmp.pvpDamageFactor` variable for overriding pvp damage factor
+- Add `ig.EVENT_STEP.SHOW_OBJECT_SLIDER_DIALOG`
 
 ### Fixed
 
