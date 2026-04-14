@@ -28,7 +28,6 @@ prestart(() => {
         },
     })
     ig.Font.inject({
-        // @ts-expect-error
         _loadMetrics(...args) {
             const backup = HTMLCanvasElement.prototype.getContext
             HTMLCanvasElement.prototype.getContext = function (
@@ -40,7 +39,6 @@ prestart(() => {
                 return backup.call(this, type, { willReadFrequently: true })
             } as any
 
-            // @ts-expect-error
             this.parent(...args)
             HTMLCanvasElement.prototype.getContext = backup
         },
