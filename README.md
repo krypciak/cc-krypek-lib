@@ -402,7 +402,7 @@ Example:
     "accepted": [
         { "type": "COMMENT", "text": "steps to run when accepted"}
     ],
-    "rejected": [
+    "declined": [
         { "type": "COMMENT", "text": "steps to run when rejected"}
     ]
 }
@@ -436,7 +436,7 @@ Example:
     "accepted": [
         { "type": "COMMENT", "text": "steps to run when accepted"}
     ],
-    "rejected": [
+    "declined": [
         { "type": "COMMENT", "text": "steps to run when rejected"}
     ],
     "initialValue": 10,
