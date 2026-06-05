@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Fixed
+
+- Fix memory-leak-fix.ts supressing errors in crossnode
+
 ## [1.2.0] 2026-04-03
 
 ### Added
