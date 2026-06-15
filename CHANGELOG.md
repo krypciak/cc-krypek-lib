@@ -7,6 +7,7 @@
 ### Fixed
 
 - Fix memory-leak-fix.ts supressing errors in crossnode
+- Only apply the pvp damage factor override when pvp is active
 
 ## [1.2.0] 2026-04-03
 

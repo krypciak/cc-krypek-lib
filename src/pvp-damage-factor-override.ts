@@ -18,7 +18,7 @@ prestart(() => {
     sc.PvpModel.inject({
         damageFactorOverride: null,
         getDmgFactor() {
-            if (this.damageFactorOverride !== null) return this.damageFactorOverride
+            if (this.isActive() && this.damageFactorOverride !== null) return this.damageFactorOverride
             return this.parent()
         },
         onVarsChanged() {
