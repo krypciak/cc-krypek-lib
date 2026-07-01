@@ -11,6 +11,7 @@ prestart(() => {
             this.bgGui.parallax.addLoadListener({
                 onLoadableComplete: () => {
                     let { timeLine } = this.bgGui
+                    if (!timeLine) return
                     // @ts-expect-error
                     let idx = timeLine.findIndex(item => item.time > 0)
                     if (idx < 0) idx = timeLine.length

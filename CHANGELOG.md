@@ -8,6 +8,7 @@
 
 - Fix memory-leak-fix.ts supressing errors in crossnode
 - Only apply the pvp damage factor override when pvp is active
+- Fix error in title-screen-skip.ts in case some other mod messes around with the title screen sequence
 
 ## [1.2.0] 2026-04-03
 
