@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Fixed
+
+- Fix step macro file loading on CCLoader3
+
 ## [1.2.1] 2026-07-02
 
 ### Fixed

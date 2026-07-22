@@ -110,7 +110,7 @@ export function applyStepMacros<T extends ig.EventStepBase.Settings[] | ig.Actio
             if (!macro) throw new Error(`Macro: ${name} not found!`)
 
             // @ts-expect-error
-            delete step['type'], delete step['name']
+            ;(delete step['type'], delete step['name'])
 
             if (macro.args) {
                 for (const argName of macro.args) {
@@ -142,7 +142,9 @@ export function applyStepMacros<T extends ig.EventStepBase.Settings[] | ig.Actio
 }
 async function findAndApplyMacroFiles() {
     const assets = KrypekLib.mod.isCCL3
-        ? [...modloader.loadedMods.values()].flatMap(m => [...(m.assets ?? [])])
+        ? [...modloader.loadedMods.values()].flatMap(m =>
+              [...(m.assets ?? [])].map(a => m.assetsDirectory.substring('assets/'.length) + a)
+          )
         : activeMods.flatMap(m => m.assets ?? [])
     const macroFilePaths = assets.filter(a => {
         const sp = a.split('/')
