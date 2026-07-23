@@ -17,8 +17,7 @@ declare global {
                 radius: ig.Event.NumberExpression
                 rotation: ig.Event.NumberExpression
             }
-            interface SET_ARRAY_REGULAR_POLYGON_VERTICES_CONSTRUCTOR
-                extends ImpactClass<SET_ARRAY_REGULAR_POLYGON_VERTICES> {
+            interface SET_ARRAY_REGULAR_POLYGON_VERTICES_CONSTRUCTOR extends ImpactClass<SET_ARRAY_REGULAR_POLYGON_VERTICES> {
                 new (
                     settings: ig.EVENT_STEP.SET_ARRAY_REGULAR_POLYGON_VERTICES.Settings
                 ): SET_ARRAY_REGULAR_POLYGON_VERTICES
