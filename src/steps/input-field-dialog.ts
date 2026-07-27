@@ -66,18 +66,24 @@ prestart(() => {
             let isValid: InputFieldIsValidFunc | undefined
             if (this.validRegex) {
                 const regex = new RegExp(ig.Event.getExpressionValue(this.validRegex))
-                isValid = text => {
-                    const isValid = regex.test(text)
-                    dialog?.userButtons![0].setActive(isValid)
-                    return isValid
-                }
+                isValid = text => regex.test(text)
             }
             if (this.validFunction) {
-                if (this.validRegex)
+                if (this.validRegex) {
                     throw new Error(
                         `ig.EVENT_STEP.SHOW_INPUT_DIALOG "validFunction" and "validRegex" options are mutually exclusive!`
                     )
+                }
                 isValid = this.validFunction
+            }
+
+            if (isValid) {
+                const origIsValid = isValid
+                isValid = async text => {
+                    const result = await origIsValid(text)
+                    dialog?.userButtons![0].setActive(result)
+                    return result
+                }
             }
 
             let dialog: sc.InputFieldDialog

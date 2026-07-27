@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Fixed
+
+- Fix `ig.EVENT_STEP.SHOW_INPUT_DIALOG` not disabling the Ok button when text is invalid
+
 ## [1.2.2] 2026-07-26
 
 ### Fixed
