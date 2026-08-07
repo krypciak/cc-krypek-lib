@@ -8,8 +8,19 @@ postload(() => {
     ig.requires('impact.base.steps').defines(injectSteps)
 })
 
-type Entry = { settings: ig.ActionStepBase.Settings | ig.EventStepBase.Settings }
-const stepList: WeakMap<ig.StepBase, Entry> = new WeakMap()
+declare global {
+    namespace ig {
+        interface StepBase {
+            settings: ig.ActionStepBase.Settings | ig.EventStepBase.Settings
+        }
+        interface EventStepBase {
+            settings: ig.EventStepBase.Settings
+        }
+        interface ActionStepBase {
+            settings: ig.ActionStepBase.Settings
+        }
+    }
+}
 
 function injectSteps() {
     function constructStepsRecursive(
@@ -41,7 +52,7 @@ function injectSteps() {
 
             /* custom stuff start */
             const step: ig.StepBase = new stepClass(stepSettings)
-            stepList.set(step, { settings: stepSettings })
+            step.settings = stepSettings
             /* custom stuff end */
 
             if (stepType == 'LABEL') {
@@ -71,7 +82,7 @@ function injectSteps() {
                 }
             }
             lastSteps.push(step)
-            if (!rootStep) rootStep = step
+            rootStep ??= step
         }
 
         lastLastSteps.push(...lastSteps)
@@ -90,6 +101,6 @@ declare global {
 }
 prestart(() => {
     ig.StepHelpers.getStepSettings = function (step: ig.StepBase) {
-        return stepList.get(step)?.settings
+        return step.settings
     }
 })
