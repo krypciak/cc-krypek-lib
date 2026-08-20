@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Added
+
+- Add volume silder for background map sounds to mod options
+
 ## [1.2.3] 2026-08-01
 
 ### Fixed

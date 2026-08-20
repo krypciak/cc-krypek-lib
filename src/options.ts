@@ -1,6 +1,7 @@
 import type { Options } from 'ccmodmanager/types/mod-options'
 import KrypekLib from './plugin'
 import { preload } from './loading-stages'
+import { resetMapSoundEntries } from './mute-map-sounds'
 
 export let Opts: ReturnType<typeof modmanager.registerAndGetModOptions<ReturnType<typeof registerOpts>>>
 
@@ -42,6 +43,22 @@ export function registerOpts() {
                         name: 'Warn on unknown step',
                         description: `Print a warning to console when a step that doesn't exist is parsed`,
                         init: false,
+                    },
+                    mapSoundsVolume: {
+                        type: 'OBJECT_SLIDER',
+                        name: 'Map background volume',
+                        description: `Volume of the background map noise`,
+                        init: 1,
+                        min: 0,
+                        max: 1,
+                        step: 0.05,
+
+                        customNumberDisplay(index) {
+                            return index * 0.05
+                        },
+                        changeEvent() {
+                            resetMapSoundEntries()
+                        },
                     },
                 },
             },
