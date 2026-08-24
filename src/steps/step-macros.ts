@@ -1,5 +1,5 @@
 import { prestart } from '../loading-stages'
-import KrypekLib from '../plugin'
+import { modMetadata } from '../mod-metadata'
 
 interface MacroSettings {
     name: string
@@ -141,7 +141,7 @@ export function applyStepMacros<T extends ig.EventStepBase.Settings[] | ig.Actio
     return steps
 }
 async function findAndApplyMacroFiles() {
-    const assets = KrypekLib.mod.isCCL3
+    const assets = modMetadata.mod.isCCL3
         ? [...modloader.loadedMods.values()].flatMap(m =>
               [...(m.assets ?? [])].map(a => m.assetsDirectory.substring('assets/'.length) + a)
           )

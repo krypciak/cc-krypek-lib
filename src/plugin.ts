@@ -1,5 +1,5 @@
 import type { PluginClass } from 'ultimate-crosscode-typedefs/modloader/mod'
-import ccmod from '../ccmod.json'
+import { setModMetadata } from './mod-metadata'
 import type { Mod1 } from './types'
 import { executePostload, executePoststart, executePreload, executePrestart } from './loading-stages'
 
@@ -17,15 +17,8 @@ import './pvp-damage-factor-override'
 import './mute-map-sounds'
 
 export default class KrypekLib implements PluginClass {
-    static dir: string
-    static mod: Mod1
-    static manifset: typeof import('../ccmod.json') = ccmod
-
     constructor(mod: Mod1) {
-        KrypekLib.dir = mod.baseDirectory
-        KrypekLib.mod = mod
-        KrypekLib.mod.isCCL3 = mod.findAllAssets ? true : false
-        KrypekLib.mod.isCCModPacked = mod.baseDirectory.endsWith('.ccmod/')
+        setModMetadata(mod)
     }
 
     async preload() {

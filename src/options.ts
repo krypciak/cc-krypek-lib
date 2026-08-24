@@ -1,7 +1,7 @@
 import type { Options } from 'ccmodmanager/types/mod-options'
-import KrypekLib from './plugin'
 import { preload } from './loading-stages'
 import { resetMapSoundEntries } from './mute-map-sounds'
+import { modMetadata } from './mod-metadata'
 
 export let Opts: ReturnType<typeof modmanager.registerAndGetModOptions<ReturnType<typeof registerOpts>>>
 
@@ -67,8 +67,8 @@ export function registerOpts() {
 
     Opts = modmanager.registerAndGetModOptions(
         {
-            modId: KrypekLib.manifset.id,
-            title: KrypekLib.manifset.title,
+            modId: modMetadata.manifest.id,
+            title: modMetadata.manifest.title,
         },
         opts
     )

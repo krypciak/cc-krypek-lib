@@ -5,7 +5,6 @@ import type {} from 'ccmodmanager/types/gui/menu'
 import type {} from 'ccmodmanager/types/local-mods'
 
 export type Mod1 = Writable<Mod> & {
-    isCCModPacked: boolean
     findAllAssets?(): void /* only there for ccl2, used to set isCCL3 */
 } & (
         | {
