@@ -15,6 +15,7 @@ import './object-slider-dialog'
 import './memory-leak-fix'
 import './pvp-damage-factor-override'
 import './mute-map-sounds'
+import './teleport-anywhere'
 
 export default class KrypekLib implements PluginClass {
     constructor(mod: Mod1) {

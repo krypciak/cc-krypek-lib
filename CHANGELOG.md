@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Added
+
+- Add "Teleport anywhere" cheat from dmitmel's crosscode-tweak-pack
+
 ## [1.3.0] 2026-08-28
 
 ### Added

@@ -60,6 +60,25 @@ export function registerOpts() {
                             resetMapSoundEntries()
                         },
                     },
+                    clickToTeleport: {
+                        type: 'CHECKBOX',
+                        init: false,
+                        name: 'Teleport anywhere',
+                        description:
+                            'Teleport to any map/room in an area or a dungeon simply by clicking it. \\c[2][cheat]\\c[0]"',
+                    },
+                    clickToTeleportNoQuestion: {
+                        type: 'CHECKBOX',
+                        init: false,
+                        name: 'Teleport anywhere certain',
+                        description: `Dont't ask for confirmation when using teleport anywhere`,
+                    },
+                    clickToTeleportInstant: {
+                        type: 'CHECKBOX',
+                        init: false,
+                        name: 'Teleport anywhere instant',
+                        description: 'Teleport instantly with no cutscene when using the above click to teleport',
+                    },
                 },
             },
         },
