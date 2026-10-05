@@ -16,6 +16,7 @@ import './memory-leak-fix'
 import './pvp-damage-factor-override'
 import './mute-map-sounds'
 import './teleport-anywhere'
+import './npcrunnerentity-despawn-fix'
 
 export default class KrypekLib implements PluginClass {
     constructor(mod: Mod1) {

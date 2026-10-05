@@ -8,6 +8,10 @@
 
 - Add "Teleport anywhere" cheat from dmitmel's crosscode-tweak-pack
 
+### Fixed
+
+- Fix vanilla bug where sc.NPCRunnerEntity that exit though ig.ENTITY.TeleportGround never despawn
+
 ## [1.3.0] 2026-08-28
 
 ### Added
