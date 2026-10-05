@@ -7,6 +7,7 @@
 ### Added
 
 - Add "Teleport anywhere" cheat from dmitmel's crosscode-tweak-pack
+- Add ig.ACTION_STEP.CALL_EVENT action step
 
 ### Fixed
 

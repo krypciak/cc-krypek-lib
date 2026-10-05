@@ -9,3 +9,5 @@ import './vec-assign'
 import './run-js-function'
 import './array/array'
 import './force-level-up'
+
+import './call-event'
