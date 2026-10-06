@@ -7,8 +7,8 @@ import { prestart } from './loading-stages'
 
 prestart(() => {
     ig.ENTITY.TeleportGround.inject({
-        getEnterActionData() {
-            const steps = this.parent()
+        getEnterActionData(actor) {
+            const steps = this.parent(actor)
             for (let i = steps.length - 1; i >= 0; i++) {
                 const step = steps[i]
                 if (step.type == 'WAIT' && step.time == -1) {
