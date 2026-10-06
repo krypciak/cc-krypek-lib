@@ -1,6 +1,6 @@
 {
     "id": "cc-krypek-lib",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "title": "Krypek's library",
     "description": "Collection of steps, API's, developer tools. QoL features: title screen skip, map background sounds volume slider, click on map to teleport",
     "repository": "https://github.com/krypciak/cc-krypek-lib",
