@@ -14,36 +14,6 @@ export function registerOpts() {
             },
             headers: {
                 general: {
-                    muteStartupMsg: {
-                        type: 'CHECKBOX',
-                        name: 'Mute startup messages',
-                        description: 'Do not print out the vanilla startup messages into dev console',
-                        init: false,
-                    },
-                    displayUnknownLabelPaths: {
-                        type: 'CHECKBOX',
-                        name: 'Display unknown label paths',
-                        description: `When a lang label is missing, instead of "UNKNOWN" display it's path`,
-                        init: false,
-                    },
-                    titleScreenSkip: {
-                        type: 'CHECKBOX',
-                        name: 'Title screen skip',
-                        description: 'Skip the title screen',
-                        init: false,
-                    },
-                    chromeReloadReplace: {
-                        type: 'CHECKBOX',
-                        name: 'Replace chrome reload',
-                        description: 'Replace chorme.runtime.reload() with location.reload()',
-                        init: false,
-                    },
-                    printWarningOnUnknownStep: {
-                        type: 'CHECKBOX',
-                        name: 'Warn on unknown step',
-                        description: `Print a warning to console when a step that doesn't exist is parsed`,
-                        init: false,
-                    },
                     mapSoundsVolume: {
                         type: 'OBJECT_SLIDER',
                         name: 'Map background volume',
@@ -59,6 +29,41 @@ export function registerOpts() {
                         changeEvent() {
                             resetMapSoundEntries()
                         },
+                    },
+                    titleScreenSkip: {
+                        type: 'CHECKBOX',
+                        name: 'Title screen skip',
+                        description: 'Skip the title screen',
+                        init: false,
+                    },
+                    info: {
+                        type: 'INFO',
+                        name: 'Options below for developers!',
+                        description: '',
+                    },
+                    muteStartupMsg: {
+                        type: 'CHECKBOX',
+                        name: 'Mute startup messages',
+                        description: 'Do not print out the vanilla startup messages into dev console',
+                        init: false,
+                    },
+                    displayUnknownLabelPaths: {
+                        type: 'CHECKBOX',
+                        name: 'Display unknown label paths',
+                        description: `When a lang label is missing, instead of "UNKNOWN" display it's path`,
+                        init: false,
+                    },
+                    chromeReloadReplace: {
+                        type: 'CHECKBOX',
+                        name: 'Replace chrome reload',
+                        description: 'Replace chorme.runtime.reload() with location.reload()',
+                        init: false,
+                    },
+                    printWarningOnUnknownStep: {
+                        type: 'CHECKBOX',
+                        name: 'Warn on unknown step',
+                        description: `Print a warning to console when a step that doesn't exist is parsed`,
+                        init: false,
                     },
                     clickToTeleport: {
                         type: 'CHECKBOX',
