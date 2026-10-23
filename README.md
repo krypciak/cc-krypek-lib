@@ -467,6 +467,26 @@ Example:
 },
 ```
 
+### `ig.ACTION_STEP.CALL_EVENT`
+
+Call an event from an action context.
+
+Settings:
+- `steps` (`ig.EventStepBase.Settings[]`) - array of event steps
+- `runType` (`'INTERRUPTABLE' | 'PARALLEL' | 'BLOCKING'`) - event run type
+- `noWait` (`boolean`) (optional) - don't wait for the event to finish
+
+Example:
+```json
+{
+    "type": "CALL_EVENT",
+    "runType": "BLOCKING",
+    "steps": [
+        { "type": "TELEPORT", "map": "autumn/path-1", "marker": "entrance" }
+    ]
+},
+```
+
 ## Pvp damage factor override
 
 You can override the current pvp damage factor by setting `tmp.pvpDamageFactor`.  
