@@ -3,6 +3,11 @@
 # Change Log
 
 ## [Unreleased]
+
+### Changed
+
+- Change `ig.ACTION_STEP.CALL_EVENT` default `runType` value to `INTERRUPTABLE`
+
 ## [1.4.0] 2026-10-06
 
 ### Added

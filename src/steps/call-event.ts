@@ -32,7 +32,7 @@ prestart(() => {
             this.noWait = settings.noWait
             this.runType =
                 (typeof settings.runType == 'string' ? ig.EventRunType[settings.runType] : settings.runType) ??
-                ig.EventRunType.PARALLEL
+                ig.EventRunType.INTERRUPTABLE
 
             if (!settings.steps) throw new Error('ig.ACTION_STEP.CALL_EVENT "steps" missing!')
             this.event = new ig.Event({ name: 'CALL_EVENT', steps: settings.steps })
