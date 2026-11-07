@@ -473,7 +473,7 @@ Call an event from an action context.
 
 Settings:
 - `steps` (`ig.EventStepBase.Settings[]`) - array of event steps
-- `runType` (`'INTERRUPTABLE' | 'PARALLEL' | 'BLOCKING'`) - event run type
+- `runType` (`'INTERRUPTABLE' | 'PARALLEL' | 'BLOCKING'`) (optional, default = `INTERRUPTABLE`) - event run type
 - `noWait` (`boolean`) (optional) - don't wait for the event to finish
 
 Example:
