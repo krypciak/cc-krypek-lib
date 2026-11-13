@@ -18,11 +18,9 @@ prestart(() => {
     if (!Opts.muteStartupMsg) return
 
     ig.ExtensionList.inject({
-        // @ts-expect-error
         onExtensionListLoaded(...args) {
             const backup = console.log
             console.log = () => {}
-            // @ts-expect-error
             this.parent(...args)
             console.log = backup
         },
